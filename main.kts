@@ -12,7 +12,7 @@ fun throwDart(circleRadius: Double = 1.0, squareSize: Double = 2.0): Double {
 }
 
 val results = mutableListOf<Int>()
-repeat(100000) {
+repeat(1000000) {
     var radius: Double = 1.0
     val radiusList = mutableListOf<Double>()
     var i = 0
@@ -20,8 +20,8 @@ repeat(100000) {
     while (radius > 0) {
         radius = throwDart(radius)
         if (radius > 0) {
-            i++
             radiusList.add(radius)
+            i++
         }
     }
     println("${it+1}: $i $radiusList")
@@ -53,4 +53,5 @@ entrys.forEachIndexed { i, e ->
 }
 println("====================================")
 println("average hits: ${results.sum().toDouble()/results.size.toDouble()}")
+println("average rounds: ${(results.sum().toDouble()/results.size.toDouble())+1}")
 println("====================================")
