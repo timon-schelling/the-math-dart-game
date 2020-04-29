@@ -1,4 +1,3 @@
-import com.sun.source.tree.IfTree
 import kotlin.math.sqrt
 import kotlin.math.pow
 import kotlin.random.Random
@@ -12,7 +11,7 @@ fun throwDart(circleRadius: Double = 1.0, squareSize: Double = 2.0): Double {
 }
 
 val results = mutableListOf<Int>()
-repeat(1000000) {
+repeat(100000) {
     var radius: Double = 1.0
     val radiusList = mutableListOf<Double>()
     var i = 0
