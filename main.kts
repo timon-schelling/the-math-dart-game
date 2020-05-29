@@ -1,7 +1,20 @@
+import java.io.File
 import kotlin.math.PI
 import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.random.Random
+
+val output = StringBuilder()
+
+val outputFile: File? = if (args.size >= 2) File(args[1]) else null
+
+fun print(s: String) {
+    if (outputFile != null) output.append(s)
+    kotlin.io.print(s)
+}
+
+fun println(s: String) = print("$s\n")
+fun println() = println("")
 
 fun throwDart(circleRadius: Double = 1.0, squareSize: Double = 2.0): Double {
     val x = Random.nextDouble(0.0, squareSize / 2)
@@ -12,7 +25,7 @@ fun throwDart(circleRadius: Double = 1.0, squareSize: Double = 2.0): Double {
 }
 
 val results = mutableListOf<Int>()
-repeat(1000000) {
+repeat(args[0].toInt()) {
     var radius: Double = 1.0
     val radiusList = mutableListOf<Double>()
     var i = 0
@@ -66,3 +79,5 @@ println("average hits: ${results.sum().toDouble() / results.size.toDouble()}")
 println("average rounds: ${(results.sum().toDouble() / results.size.toDouble()) + 1}")
 println("expected rounds: $expectedRounds")
 println("====================================")
+
+if (outputFile != null) outputFile.writeText(output.toString())
